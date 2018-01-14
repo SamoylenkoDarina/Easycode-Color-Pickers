@@ -8,24 +8,32 @@ class ColorPiker extends React.Component {
         this.state = {
             colorsList: [
                 'red', 'green', 'blue', 'yellow'
-            ]
+            ],
+            selectedColor: 'violet'
         }
     }
+
+    handleClick(param) {
+        this.setState({
+            selectedColor: param
+        })
+    }
+
     render() {
         return (
-            <div>
+            <div  className="container-whith-colors">
                 <div className="box-with-colors">
                     {
                         this.state.colorsList.map((color, index) => {
                             return (
                                 <div key={index}>
-                                    <CellColor color={color} />
+                                    <CellColor color={color} onClick={this.handleClick.bind(this)} />
                                 </div>
                             )
                         })
                     }
                 </div>
-                <div className="colorful-box">
+                <div className="colorful-box" style={ {'background': this.state.selectedColor} }>
                 
                 </div>
             </div>
